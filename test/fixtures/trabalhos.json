@@ -1,0 +1,65 @@
+{
+  "aluno": {
+    "nome": "Helena Castro",
+    "email": "helena.castro@example.com",
+    "matricula": "2025201",
+    "senha": "helena123"
+  },
+  "disciplinaMatriculada": "disciplina-programacao-web",
+  "entregas": [
+    {
+      "descricao": "trabalho com título e descrição",
+      "dados": {
+        "disciplinaId": "disciplina-programacao-web",
+        "titulo": "API REST com Express",
+        "descricao": "CRUD de produtos com Express e MongoDB."
+      },
+      "statusEsperado": 201
+    },
+    {
+      "descricao": "trabalho apenas com título",
+      "dados": {
+        "disciplinaId": "disciplina-programacao-web",
+        "titulo": "Formulário acessível"
+      },
+      "statusEsperado": 201
+    },
+    {
+      "descricao": "trabalho sem título",
+      "dados": {
+        "disciplinaId": "disciplina-programacao-web",
+        "descricao": "Entrega sem título"
+      },
+      "statusEsperado": 400,
+      "erroEsperado": "Os campos \"disciplinaId\" e \"titulo\" são obrigatórios."
+    },
+    {
+      "descricao": "trabalho em disciplina na qual o aluno não está matriculado",
+      "dados": {
+        "disciplinaId": "disciplina-historia",
+        "titulo": "Resenha sobre a Revolução Francesa"
+      },
+      "statusEsperado": 409,
+      "erroEsperado": "O aluno não está matriculado nesta disciplina."
+    },
+    {
+      "descricao": "trabalho em disciplina inexistente",
+      "dados": {
+        "disciplinaId": "disciplina-inexistente",
+        "titulo": "Trabalho perdido"
+      },
+      "statusEsperado": 404,
+      "erroEsperado": "Disciplina com id \"disciplina-inexistente\" não encontrada."
+    },
+    {
+      "descricao": "trabalho em nome de outro aluno",
+      "alunoId": "aluno-bruno-lima",
+      "dados": {
+        "disciplinaId": "disciplina-matematica",
+        "titulo": "Lista de Exercícios 2"
+      },
+      "statusEsperado": 403,
+      "erroEsperado": "Você só pode acessar os seus próprios dados."
+    }
+  ]
+}

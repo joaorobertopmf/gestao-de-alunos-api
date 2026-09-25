@@ -111,6 +111,41 @@ Na primeira execução com o banco vazio, a API popula automaticamente as coleç
 dados fake descrito em [Dados fake pré-carregados](#dados-fake-pré-carregados). Em execuções
 seguintes, os dados já existentes são preservados.
 
+### Variáveis de ambiente
+
+As variáveis são carregadas de um arquivo `.env` na raiz (via `dotenv`). Use o `.env.example`
+como ponto de partida:
+
+```bash
+cp .env.example .env
+```
+
+## Testes automatizados
+
+Os testes usam **Mocha**, **Chai** e **SuperTest** e cobrem o fluxo: login do administrador,
+cadastro de aluno, login do aluno e registro da entrega de um trabalho pelo aluno.
+
+```
+test/
+  fixtures/        # massa de dados em JSON (data-driven testing)
+  helpers/         # login de admin e de aluno, leitura dos arquivos JSON
+  login.test.js
+  alunos.test.js
+  trabalhos.test.js
+```
+
+Cada cenário é descrito nos arquivos JSON de `test/fixtures`; para adicionar um caso novo basta
+incluir um item no JSON. As credenciais do administrador usadas pelo helper vêm do `.env`
+(`ADMIN_EMAIL` e `ADMIN_SENHA`).
+
+```bash
+npm test
+```
+
+É necessário um MongoDB acessível em `MONGODB_URI`. No GitHub Actions
+(`.github/workflows/tests.yml`) o MongoDB sobe como service container e os testes rodam a cada
+push ou pull request na `main`.
+
 ## Documentação da API (Swagger)
 
 A documentação completa de todas as rotas, parâmetros, corpos de requisição e respostas está

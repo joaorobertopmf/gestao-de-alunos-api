@@ -1,0 +1,53 @@
+[
+  {
+    "descricao": "aluno com todos os campos preenchidos",
+    "dados": {
+      "nome": "Diego Ferreira",
+      "email": "diego.ferreira@example.com",
+      "matricula": "2025101",
+      "senha": "diego123"
+    },
+    "statusEsperado": 201
+  },
+  {
+    "descricao": "outra aluna com todos os campos preenchidos",
+    "dados": {
+      "nome": "Elaine Rocha",
+      "email": "elaine.rocha@example.com",
+      "matricula": "2025102",
+      "senha": "elaine123"
+    },
+    "statusEsperado": 201
+  },
+  {
+    "descricao": "aluno sem matrícula",
+    "dados": {
+      "nome": "Fábio Nunes",
+      "email": "fabio.nunes@example.com",
+      "senha": "fabio123"
+    },
+    "statusEsperado": 400,
+    "erroEsperado": "Os campos \"nome\", \"email\", \"matricula\" e \"senha\" são obrigatórios."
+  },
+  {
+    "descricao": "aluno sem senha",
+    "dados": {
+      "nome": "Gabriela Dias",
+      "email": "gabriela.dias@example.com",
+      "matricula": "2025104"
+    },
+    "statusEsperado": 400,
+    "erroEsperado": "Os campos \"nome\", \"email\", \"matricula\" e \"senha\" são obrigatórios."
+  },
+  {
+    "descricao": "aluno com e-mail já cadastrado",
+    "dados": {
+      "nome": "Ana Souza Duplicada",
+      "email": "ana.souza@example.com",
+      "matricula": "2025105",
+      "senha": "ana123"
+    },
+    "statusEsperado": 409,
+    "erroEsperado": "Já existe um aluno cadastrado com essa matrícula ou e-mail."
+  }
+]
